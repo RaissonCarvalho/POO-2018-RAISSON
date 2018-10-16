@@ -9,7 +9,11 @@ import java.util.Random;
 
 public class BancoServices {
 
-    ArrayList<Conta> listaContas = new ArrayList<>();
+    private ArrayList<Conta> listaContas = new ArrayList<>();
+
+    public ArrayList<Conta> getListaContas() {
+        return listaContas;
+    }
 
     public void criarConta(String nome, String cpf, String senha){
 
@@ -52,6 +56,7 @@ public class BancoServices {
 
                 }else{
                     showMsg("CPF ou senha Inválidos!");
+                    break;
                 }
 
             }

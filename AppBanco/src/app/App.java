@@ -38,47 +38,55 @@ public class App {
                 }
                 case FAZER_LOGIN:
 
-                    String cpfDigitado = UserInterface.solicitaCPF();
-                    String senhaDigitada = UserInterface.solicitaSenha();
-                    Conta conta = bancoServices.logar(cpfDigitado, senhaDigitada);
+                    if (bancoServices.getListaContas().size() <= 0){
 
-                    /* Criando constantes para criação de Menu enquanto logado */
-                    final int SACAR = 1;
-                    final int DEPOSITAR_LOGADO = 2;
-                    final int TRANSFERIR = 3;
-                    final int MOSTRAR_SALDO = 4;
-                    final int FAZER_LOGOUT = 0;
+                        UserInterface.showMsg("Nenhuma conta cadastrada!");
+                        break;
 
-                    while (true){
+                    }else{
 
-                        int op = UserInterface.lerOpcaoMenuLogado();
+                        String cpfDigitado = UserInterface.solicitaCPF();
+                        String senhaDigitada = UserInterface.solicitaSenha();
+                        Conta conta = bancoServices.logar(cpfDigitado, senhaDigitada);
 
-                        switch (op){
-                            case SACAR:
+                        final int SACAR = 1;
+                        final int DEPOSITAR_LOGADO = 2;
+                        final int TRANSFERIR = 3;
+                        final int MOSTRAR_SALDO = 4;
+                        final int FAZER_LOGOUT = 0;
 
-                                double valor = UserInterface.solicitaValor();
-                                if (bancoServices.sacar(conta, valor)) {
-                                    bancoServices.sacar(conta, valor);
-                                    UserInterface.showMsg("Saque realizado com sucesso");
-                                }else
-                                    UserInterface.showMsg("Saldo Insuficiente!");
+                        while (true){
 
-                                break;
-                            case DEPOSITAR_LOGADO:
-                                double valorDeposito = UserInterface.solicitaValor();
+                            int op = UserInterface.lerOpcaoMenuLogado();
 
-                                if (bancoServices.depositarLogado(conta, valorDeposito)){
+                            switch (op){
+                                case SACAR:
 
-                                    bancoServices.depositarLogado(conta, valorDeposito);
-                                    UserInterface.showMsg("Depositado com sucesso!");
+                                    double valor = UserInterface.solicitaValor();
+                                    if (bancoServices.sacar(conta, valor)) {
+                                        bancoServices.sacar(conta, valor);
+                                        UserInterface.showMsg("Saque realizado com sucesso");
+                                    }else
+                                        UserInterface.showMsg("Saldo Insuficiente!");
 
-                                }else{
-                                    UserInterface.showMsg("Verifique o valor digitado!");
-                                }
+                                    break;
+                                case DEPOSITAR_LOGADO:
+                                    double valorDeposito = UserInterface.solicitaValor();
 
-                                break;
-                            case TRANSFERIR:
+                                    if (bancoServices.depositarLogado(conta, valorDeposito)){
 
+                                        bancoServices.depositarLogado(conta, valorDeposito);
+                                        UserInterface.showMsg("Depositado com sucesso!");
+
+                                    }else{
+                                        UserInterface.showMsg("Verifique o valor digitado!");
+                                    }
+
+                                    break;
+                                case TRANSFERIR:
+
+//                           TODO
+//
 //                                    Conta contaTransferencia = null;
 //
 //                                    double valorTransferido = Double.valueOf(JOptionPane
@@ -109,21 +117,27 @@ public class App {
 //
 //                                    }
 
-                                break;
-                            case MOSTRAR_SALDO:
-                                showMsg(conta.consultarSaldo());
-                                break;
-                            case FAZER_LOGOUT:
-                                return;
-                            default:
-                                UserInterface.showMsg("Opção Inválida!");
+                                    break;
+                                case MOSTRAR_SALDO:
+                                    showMsg(conta.consultarSaldo());
+                                    break;
+                                case FAZER_LOGOUT:
+                                    return;
+                                default:
+                                    UserInterface.showMsg("Opção Inválida!");
+
+                            }
 
                         }
 
                     }
 
+                    /* Criando constantes para criação de Menu enquanto logado */
+
+
 //                    break;
 //                case DEPOSITAR:
+//                    TODO
 //
 //                    Conta contaDeposito = null;
 //
@@ -159,8 +173,6 @@ public class App {
             }
 
         }
-
-
 
     }
 
