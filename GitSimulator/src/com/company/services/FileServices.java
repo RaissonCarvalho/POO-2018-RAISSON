@@ -17,4 +17,32 @@ public class FileServices {
         return true;
     }
 
+    public boolean addLine(File file, int numberOfLines){
+
+        file.setNumberOfLines(file.getNumberOfLines() + numberOfLines);
+
+        file.setModified(true);
+
+        return true;
+
+    }
+
+    public boolean removeLine(File file, int numberOfLines){
+
+        file.setNumberOfLines(file.getNumberOfLines() - numberOfLines);
+
+        file.setModified(true);
+
+        return true;
+
+    }
+
+    public boolean removeFile(File file){
+
+        fileArrayList.remove(file);
+
+        return true;
+
+    }
+
 }
