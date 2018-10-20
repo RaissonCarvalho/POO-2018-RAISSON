@@ -6,13 +6,16 @@ import java.util.ArrayList;
 
 public class FileServices {
 
-    private ArrayList<File> fileArrayList;
+    private ArrayList<File> fileList;
 
-    public boolean createFile(){
+    public ArrayList<File> getFileList() {
+        return fileList;
+    }
 
-        File file = new File("", 0, false);
+    public boolean createFile(String name, int numberLines, boolean modified){
 
-        fileArrayList.add(file);
+        File file = new File(name, numberLines, false);
+        fileList.add(file);
 
         return true;
     }
@@ -20,17 +23,15 @@ public class FileServices {
     public boolean addLine(File file, int numberOfLines){
 
         file.setNumberOfLines(file.getNumberOfLines() + numberOfLines);
-
         file.setModified(true);
 
         return true;
 
     }
 
-    public boolean removeLine(File file, int numberOfLines){
+    public boolean deleteLine(File file, int numberOfLines){
 
         file.setNumberOfLines(file.getNumberOfLines() - numberOfLines);
-
         file.setModified(true);
 
         return true;
@@ -39,9 +40,43 @@ public class FileServices {
 
     public boolean removeFile(File file){
 
-        fileArrayList.remove(file);
+        fileList.remove(file);
 
         return true;
+
+    }
+
+
+    public File searchFileByName(String name){
+        File foundFile = null;
+        for (int i = 0; i < fileList.size(); i++){
+
+            if (fileList.get(i).getName() == name){
+
+                foundFile = fileList.get(i);
+
+            }
+
+        }
+
+        return foundFile;
+
+    }
+
+    public File searchModifiedFile(){
+
+        File foundFile = null;
+        for (int i = 0; i < fileList.size(); i++){
+
+            if (fileList.get(i).isModified()){
+
+                foundFile = fileList.get(i);
+
+            }
+
+        }
+
+        return foundFile;
 
     }
 
