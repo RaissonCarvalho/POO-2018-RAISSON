@@ -6,6 +6,9 @@ public class File {
     private int numberOfLines = 0;
     private boolean modified = false;
 
+    public File() {
+    }
+
     public File(String name, int numberOfLines, boolean modified) {
         this.name = name;
         this.numberOfLines = numberOfLines;

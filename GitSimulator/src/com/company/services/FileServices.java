@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class FileServices {
 
-    private ArrayList<File> fileList;
+    private ArrayList<File> fileList = new ArrayList<>();
 
     public ArrayList<File> getFileList() {
         return fileList;
@@ -20,7 +20,9 @@ public class FileServices {
         return true;
     }
 
-    public boolean addLine(File file, int numberOfLines){
+    public boolean addLine(String fileName, int numberOfLines){
+
+        File file = searchFileByName(fileName);
 
         file.setNumberOfLines(file.getNumberOfLines() + numberOfLines);
         file.setModified(true);
@@ -29,7 +31,9 @@ public class FileServices {
 
     }
 
-    public boolean deleteLine(File file, int numberOfLines){
+    public boolean deleteLine(String fileName, int numberOfLines){
+
+        File file = searchFileByName(fileName);
 
         file.setNumberOfLines(file.getNumberOfLines() - numberOfLines);
         file.setModified(true);
@@ -38,8 +42,9 @@ public class FileServices {
 
     }
 
-    public boolean removeFile(File file){
+    public boolean removeFile(String fileName){
 
+        File file = searchFileByName(fileName);
         fileList.remove(file);
 
         return true;
