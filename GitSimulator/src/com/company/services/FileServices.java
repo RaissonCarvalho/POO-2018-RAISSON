@@ -68,7 +68,9 @@ public class FileServices {
 
     }
 
-    public File searchModifiedFile(){
+    public ArrayList<File> searchModifiedFiles(){
+
+        ArrayList<File> modifiedFilesList = new ArrayList<>();
 
         File foundFile = null;
         for (int i = 0; i < fileList.size(); i++){
@@ -76,12 +78,13 @@ public class FileServices {
             if (fileList.get(i).isModified()){
 
                 foundFile = fileList.get(i);
+                modifiedFilesList.add(foundFile);
 
             }
 
         }
 
-        return foundFile;
+        return modifiedFilesList;
 
     }
 
