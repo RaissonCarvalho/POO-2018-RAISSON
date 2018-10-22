@@ -7,28 +7,37 @@ import java.util.ArrayList;
 
 public class StageAreaServices {
 
-    private FileServices fileServices;
+    private StageArea stageArea;
 
-    private StageArea stageArea = new StageArea();
+    public StageArea getStageArea() {
+        return stageArea;
+    }
 
-    private ArrayList<File> listFileStageArea = stageArea.getListFileStageArea();
+    public void gitAdd(ArrayList<File> fileList){
+        stageArea = new StageArea();
+        stageArea.setStageAreaFileList(fileList);
 
-    public void gitAdd(){
+    }
 
-       try {
+    public String listingFilesToCommit(){
 
-           listFileStageArea = fileServices.searchModifiedFiles();
+        String fileNamesToCommit = "Arquivos a serem commitados: \n ";
 
-           for (int i = 0; i < listFileStageArea.size(); i++){
+        if (stageArea.getStageAreaFileList().size() <= 0){
 
-               listFileStageArea.get(i).setModified(false);
+            return "Lista Vazia";
 
-           }
+        }else{
 
-       }catch (NullPointerException e){
-           System.out.println(e.getMessage());
-       }
+            for (int i = 0; i < stageArea.getStageAreaFileList().size(); i++){
 
+                fileNamesToCommit += "- " + stageArea.getStageAreaFileList().get(i).getName()+ " \n";
+
+            }
+
+            return fileNamesToCommit;
+
+        }
     }
 
 }

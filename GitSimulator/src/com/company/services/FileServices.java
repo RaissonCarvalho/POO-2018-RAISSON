@@ -35,8 +35,12 @@ public class FileServices {
 
         File file = searchFileByName(fileName);
 
-        file.setNumberOfLines(file.getNumberOfLines() - numberOfLines);
-        file.setModified(true);
+        if (file.getNumberOfLines() > 0 ){
+
+            file.setNumberOfLines(file.getNumberOfLines() - numberOfLines);
+            file.setModified(true);
+
+        }
 
         return true;
 
@@ -54,14 +58,21 @@ public class FileServices {
 
     public File searchFileByName(String name){
         File foundFile = null;
-        for (int i = 0; i < fileList.size(); i++){
 
-            if (fileList.get(i).getName() == name){
+        try {
 
-                foundFile = fileList.get(i);
+            for (int i = 0; i < fileList.size(); i++){
+
+                if (fileList.get(i).getName() == name){
+
+                    foundFile = fileList.get(i);
+
+                }
 
             }
 
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
         }
 
         return foundFile;
@@ -73,6 +84,7 @@ public class FileServices {
         ArrayList<File> modifiedFilesList = new ArrayList<>();
 
         File foundFile = null;
+
         for (int i = 0; i < fileList.size(); i++){
 
             if (fileList.get(i).isModified()){
@@ -86,6 +98,26 @@ public class FileServices {
 
         return modifiedFilesList;
 
+    }
+
+    public String listingFileNames(){
+
+        String fileNames = "";
+
+        if (fileList.size() <= 0){
+
+            return "Lista Vazia";
+        }else{
+
+            for (int i = 0; i < fileList.size(); i++){
+
+                fileNames += "- " + fileList.get(i).getName()+ " \n";
+
+            }
+
+            return fileNames;
+
+        }
     }
 
 }

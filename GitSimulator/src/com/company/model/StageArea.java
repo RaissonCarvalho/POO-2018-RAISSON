@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 public class StageArea {
 
-    private ArrayList<File> listFileStageArea = new ArrayList<>(); /* Arquivos que estão no Stage Area */
+    private ArrayList<File> stageAreaFileList = new ArrayList<>(); /* Arquivos que estão no Stage Area */
 
-    public ArrayList<File> getListFileStageArea() {
-        return listFileStageArea;
+    public ArrayList<File> getStageAreaFileList() {
+        return stageAreaFileList;
+    }
+
+    public void setStageAreaFileList(ArrayList<File> stageAreaFileList) {
+        this.stageAreaFileList = stageAreaFileList;
     }
 }
