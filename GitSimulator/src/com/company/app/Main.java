@@ -21,9 +21,10 @@ public class Main {
         final int CRIAR_ARQUIVO = 2;
         final int EXCLUIR_ARQUVIVO = 3;
         final int GIT_ADD = 4;
-        final int GIT_COMMIT = 5;
-        final int LISTAR_ARQUIVOS_UNTRACKED = 6;
-        final int LISTAR_ARQUIVOS_TRACKED = 7;
+        final int GIT_RESET = 5;
+        final int GIT_COMMIT = 6;
+        final int LISTAR_ARQUIVOS_UNTRACKED = 7;
+        final int LISTAR_ARQUIVOS_TRACKED = 8;
         final int SAIR = 0;
 
         while (true){
@@ -55,6 +56,12 @@ public class Main {
                     gitServices.gitAdd(fileServices);
                     UserInterface.showMsg("Sucess!");
 
+
+                    break;
+                case GIT_RESET:
+
+                    gitServices.gitReset(fileServices);
+                    UserInterface.showMsg("Sucess!");
 
                     break;
                 case GIT_COMMIT:
