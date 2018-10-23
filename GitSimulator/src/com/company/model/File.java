@@ -1,7 +1,5 @@
 package com.company.model;
 
-import java.util.ArrayList;
-
 public class File {
 
     private String name;

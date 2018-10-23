@@ -1,10 +1,5 @@
 package com.company.services;
 
-import com.company.model.File;
-import com.company.model.Repository;
-
-import java.util.ArrayList;
-
 public class GitServices {
 
     public void gitAdd(FileServices fileServices){
@@ -26,10 +21,10 @@ public class GitServices {
 
     }
 
-
-    public void gitCommit(ArrayList<File> filesToCommit, String mensagem, Repository repository){
-
-    }
+//                              TODO
+//    public void gitCommit(ArrayList<File> filesToCommit, String mensagem, Repository repository){
+//
+//    }
 
 
 }

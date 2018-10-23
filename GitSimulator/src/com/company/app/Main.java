@@ -7,7 +7,6 @@ import com.company.services.GitServices;
 import com.company.ui.UserInterface;
 
 import java.util.ArrayList;
-import java.util.WeakHashMap;
 
 public class Main {
 
@@ -43,29 +42,34 @@ public class Main {
 
                     String fileName = UserInterface.requestFileName();
                     fileServices.createFile(fileName, 0, false);
+                    UserInterface.showMsg("Arquivo criado!");
 
                     break;
                 case EXCLUIR_ARQUVIVO:
 
+                    //TODO
 
                     break;
                 case GIT_ADD:
 
                     gitServices.gitAdd(fileServices);
+                    UserInterface.showMsg("Sucess!");
 
 
                     break;
                 case GIT_COMMIT:
 
+                    //TODO
+
                     break;
                 case LISTAR_ARQUIVOS_UNTRACKED:
 
-                    UserInterface.showMsg(fileServices.listiningUntrackedFiles());
+                    UserInterface.showMsg("Lista Arquivos Untracked: \n" + fileServices.listiningUntrackedFiles());
 
                     break;
                 case LISTAR_ARQUIVOS_TRACKED:
 
-                    UserInterface.showMsg(fileServices.listiningTrackedFiles());
+                    UserInterface.showMsg("Lista Arquivos tracked: \n" + fileServices.listiningTrackedFiles());
 
                     break;
 
