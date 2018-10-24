@@ -6,14 +6,12 @@ public class GitServices {
 
         try{
 
-            for (int i = 0; i < fileServices.getUntrackedFileList().size(); i++){
+            for (int i = 0; i < fileServices.getUntrackedFileList().size(); i++) {
 
                 fileServices.getTrackedFileList().add(fileServices.getUntrackedFileList().get(i));
                 fileServices.getUntrackedFileList().remove(i);
 
             }
-
-
 
         }catch (NullPointerException e){
             System.out.println("Empty List");

@@ -44,7 +44,7 @@ public class FileServices {
 
             for (int i = 0; i < trackedFileList.size(); i++){
 
-                if (fileList.get(i).getName() == name){
+                if (fileList.get(i).getName().equals(name)){
 
                     foundFile = fileList.get(i);
 
@@ -76,7 +76,7 @@ public class FileServices {
 
         }catch (NullPointerException e){
 
-            return  "Não possui arquivos untracked";
+            return   fileNames = "Não possui arquivos untracked";
 
         }
 
@@ -98,7 +98,7 @@ public class FileServices {
 
         }catch (NullPointerException e){
 
-            return "Não possui arquivos tracked";
+            return fileNames = "Não possui arquivos tracked";
 
         }
 
