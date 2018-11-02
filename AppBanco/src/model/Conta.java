@@ -1,9 +1,9 @@
 package model;
 
-public class Conta {
+public abstract class Conta {
 
     private Titular titular;
-    private Integer numero;
+    private int numero;
     private String senha;
     private double saldo;
 
@@ -18,7 +18,7 @@ public class Conta {
         return titular;
     }
 
-    public Integer getNumero() {
+    public int getNumero() {
         return numero;
     }
 
@@ -30,48 +30,11 @@ public class Conta {
         return senha;
     }
 
-    public boolean depositar(double valor){
+    public abstract boolean depositar(double valor);
 
-        if (valor > 0){
+    public abstract boolean sacar(double valor);
 
-            this.saldo += valor;
+    public abstract boolean transferir(double valor, Conta contaDestino);
 
-            return true;
-        }else
-            return false;
-
-    }
-
-    public boolean sacar(double valor){
-
-        if (this.saldo > 0){
-            this.saldo -= valor;
-
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-
-    public boolean transferir(double valor, Conta contaDestino){
-
-        if (this.saldo > 0 && this.saldo >= valor){
-
-            sacar(valor);
-            contaDestino.depositar(valor);
-
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    public String consultarSaldo(){
-        String strSaldo = String.valueOf(this.saldo);
-
-        return strSaldo;
-    }
+    public abstract String consultarSaldo();
 }

@@ -1,6 +1,5 @@
 package com.company.app;
 
-import com.company.model.File;
 import com.company.model.Repository;
 import com.company.services.FileServices;
 import com.company.services.GitServices;
@@ -12,7 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<File> files = new ArrayList<>();
 
         FileServices fileServices = new FileServices();
         GitServices gitServices = new GitServices();
@@ -53,15 +51,30 @@ public class Main {
                     break;
                 case GIT_ADD:
 
-                    gitServices.gitAdd(fileServices);
-                    UserInterface.showMsg("Sucess!");
+                    if (fileServices.getUntrackedFileList().isEmpty()){
 
+                        UserInterface.showMsg("Não há arquivos para serem add");
+
+                    }else{
+
+                        gitServices.gitAdd(fileServices);
+                        UserInterface.showMsg("Sucess!");
+
+                    }
 
                     break;
                 case GIT_RESET:
 
-                    gitServices.gitReset(fileServices);
-                    UserInterface.showMsg("Sucess!");
+                    if (fileServices.getTrackedFileList().isEmpty()){
+
+                        UserInterface.showMsg("Não há arquivos ");
+
+                    }else{
+
+                        gitServices.gitReset(fileServices);
+                        UserInterface.showMsg("Sucess!");
+
+                    }
 
                     break;
                 case GIT_COMMIT:

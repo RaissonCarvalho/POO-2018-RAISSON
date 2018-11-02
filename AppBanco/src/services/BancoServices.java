@@ -1,6 +1,7 @@
 package services;
 
 import model.Conta;
+import model.ContaCorrente;
 import model.Titular;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class BancoServices {
         return listaContas;
     }
 
-    public void criarConta(String nome, String cpf, String senha){
+    public void criarContaCorrente(String nome, String cpf, String senha){
 
         try {
 
@@ -25,7 +26,7 @@ public class BancoServices {
             Random random = new Random();
             int numeroRandomConta = random.nextInt(9999 - 1000) + 1000;
 
-            Conta conta = new Conta(titular, numeroRandomConta, 0, senha);
+            Conta conta = new ContaCorrente(titular, numeroRandomConta, 0, senha);
 
             showMsg("Cadastro realizado com Sucesso");
 

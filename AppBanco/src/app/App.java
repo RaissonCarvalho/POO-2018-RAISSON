@@ -31,7 +31,7 @@ public class App {
                     String cpf = UserInterface.solicitaCPF();
                     String senha = UserInterface.solicitaSenha();
 
-                    bancoServices.criarConta(nome, cpf, senha);
+                    bancoServices.criarContaCorrente(nome, cpf, senha);
 
                     break;
 
