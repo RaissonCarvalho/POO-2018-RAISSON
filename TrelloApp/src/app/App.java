@@ -12,6 +12,7 @@ public class App {
 
         final int CREAT_BOARD =1;
         final int ADD_LIST = 2;
+        final int LIST_BOARDS = 3;
         final int SAIR = 0;
 
         while (true){
@@ -57,6 +58,22 @@ public class App {
                     }catch (IndexOutOfBoundsException e){
 
                         UserInterface.showMsg("Impossível adicionar lista. Nenhum quadro criado");
+                        break;
+
+                    }
+
+                }
+
+                case LIST_BOARDS:{
+
+                    if (service.getBoards().isEmpty()){
+
+                        UserInterface.showMsg("Nenhum Quadro criado");
+                        break;
+
+                    }else{
+
+                        UserInterface.showMsg(service.listBoards());
                         break;
 
                     }
