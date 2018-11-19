@@ -25,4 +25,8 @@ public class UserInterface {
         return JOptionPane.showInputDialog(null, "Digite o título: ");
     }
 
+    public static String requestType(){
+        return JOptionPane.showInputDialog(null, "Digite o tipo do quadro: (Private ou Public)");
+    }
+
 }
