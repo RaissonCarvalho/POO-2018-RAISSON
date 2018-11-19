@@ -35,13 +35,7 @@ public class Board {
 
     public void addList(List list){
 
-        try {
-
-            lists.add(list);
-
-        }catch (NullPointerException e){
-
-        }
+        lists.add(list);
 
     }
 
