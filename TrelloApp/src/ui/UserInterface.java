@@ -10,6 +10,7 @@ public class UserInterface {
         menu += "\n2 - Adicionar Lista a Quadro";
         menu += "\n3 - Exibir Quadros";
         menu += "\n4 - Exibir Listas";
+        menu += "\n5 - Adicionando Cartão a Listas";
         menu += "\n\n0 - sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);
@@ -31,8 +32,8 @@ public class UserInterface {
         return JOptionPane.showInputDialog(null, "Digite o titulo da Lista: ");
     }
 
-    public static String requestType(){
-        return JOptionPane.showInputDialog(null, "Digite o tipo do quadro: (Private ou Public)");
+    public static String requestVisibility(){
+        return JOptionPane.showInputDialog(null, "Digite a visibilidade do quadro: (Private ou Public)");
     }
 
 }
