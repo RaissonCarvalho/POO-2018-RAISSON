@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Board {
 
     private String titulo;
-    private String tipo;
+    private String visibilidade;
     private ArrayList<List> lists = new ArrayList<>();
 
-    public Board(String titulo, String tipo) {
+    public Board(String titulo, String visibilidade) {
         this.titulo = titulo;
-        this.tipo = tipo;
+        this.visibilidade = visibilidade;
     }
 
     public String getTitulo() {
@@ -21,12 +21,12 @@ public class Board {
         this.titulo = titulo;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getVisibilidade() {
+        return visibilidade;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setVisibilidade(String visibilidade) {
+        this.visibilidade = visibilidade;
     }
 
     public java.util.List<List> getLists(){
