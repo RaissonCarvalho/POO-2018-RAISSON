@@ -21,8 +21,12 @@ public class UserInterface {
 
     }
 
-    public static String requestTitle(){
-        return JOptionPane.showInputDialog(null, "Digite o título: ");
+    public static String requestBoardTitle(){
+        return JOptionPane.showInputDialog(null, "Digite o título do quadro: ");
+    }
+
+    public static String requestListTitle(){
+        return JOptionPane.showInputDialog(null, "Digite o titulo da Lista: ");
     }
 
     public static String requestType(){
