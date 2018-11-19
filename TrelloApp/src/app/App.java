@@ -13,6 +13,7 @@ public class App {
         final int CREAT_BOARD =1;
         final int ADD_LIST = 2;
         final int LIST_BOARDS = 3;
+        final int LIST_ALL_LISTS = 4;
         final int SAIR = 0;
 
         while (true){
@@ -77,6 +78,42 @@ public class App {
                         break;
 
                     }
+
+                }
+
+                case LIST_ALL_LISTS:{
+
+                   if (service.getBoards().isEmpty()){
+
+                       UserInterface.showMsg("Impossível listar Cartões. Nenhum Quadro criado");
+                       break;
+
+                   }else{
+
+                       String title = UserInterface.requestBoardTitle();
+
+                       try {
+
+                           if (service.searchByTitle(title).getLists().isEmpty()){
+
+                               UserInterface.showMsg("Nenhuma Lista no Quadro" + " " + service.searchByTitle(title).getTitulo());
+                               break;
+
+                           }else{
+
+                               UserInterface.showMsg(service.searchByTitle(title).listingAllLists());
+                               break;
+
+                           }
+
+                       }catch (NullPointerException e){
+
+                           UserInterface.showMsg("Quadro não encontrado");
+                           break;
+
+                       }
+
+                   }
 
                 }
 
