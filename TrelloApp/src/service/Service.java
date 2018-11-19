@@ -1,6 +1,7 @@
 package service;
 
 import model.Board;
+import model.List;
 
 import java.util.ArrayList;
 
@@ -20,24 +21,8 @@ public class Service {
 
     }
 
-    public int searchIndexBoard(String title){
 
-        int index = 0;
-
-        for (int i = 0; i < boards.size(); i++){
-
-            if (boards.get(i).getTitulo().equals(title)){
-
-                index = i;
-                break;
-
-            }
-
-        }
-        return index;
-    }
-
-    public Board searchByTitle(String title){
+    public Board searchBoardByTitle(String title){
 
         Board board = null;
 
@@ -54,6 +39,7 @@ public class Service {
 
         return board;
     }
+
 
     public String listBoards(){
 
