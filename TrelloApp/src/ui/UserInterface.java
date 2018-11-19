@@ -6,7 +6,8 @@ public class UserInterface {
 
     public static int readMenuOption(){
         String menu = "--------  TRELLO  --------";
-        menu += "\n\n1 - Criar novo Quadro";
+        menu += "\n1 - Criar novo Quadro";
+        menu += "\n\n0 - sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);
 
@@ -20,7 +21,7 @@ public class UserInterface {
     }
 
     public static String requestTitle(){
-        return JOptionPane.showInputDialog(null, "Digite o título");
+        return JOptionPane.showInputDialog(null, "Digite o título: ");
     }
 
 }
