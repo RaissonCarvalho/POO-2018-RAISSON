@@ -12,8 +12,9 @@ public class App {
 
         final int CREAT_BOARD =1;
         final int ADD_LIST = 2;
-        final int LIST_BOARDS = 3;
+        final int LIST_ALL_BOARDS = 3;
         final int LIST_ALL_LISTS = 4;
+        final int LIST_ALL_CARDS = 5;
         final int SAIR = 0;
 
         while (true){
@@ -27,7 +28,7 @@ public class App {
                     try {
 
                         String title = UserInterface.requestBoardTitle();
-                        String type = UserInterface.requestType();
+                        String type = UserInterface.requestVisibility();
 
                         service.createBoard(title, type);
 
@@ -65,7 +66,7 @@ public class App {
 
                 }
 
-                case LIST_BOARDS:{
+                case LIST_ALL_BOARDS:{
 
                     if (service.getBoards().isEmpty()){
 
@@ -115,6 +116,21 @@ public class App {
 
                    }
 
+                }
+
+                case LIST_ALL_CARDS: {
+
+                    if (service.getBoards().isEmpty()) {
+
+                        UserInterface.showMsg("Impossível listar Cartões. Nenhum Quadro criado");
+                        break;
+
+                    } else {
+
+                        String title = UserInterface.requestBoardTitle();
+
+
+                    }
                 }
 
                 case SAIR:{
