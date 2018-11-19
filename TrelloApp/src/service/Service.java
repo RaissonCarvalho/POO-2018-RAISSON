@@ -55,4 +55,17 @@ public class Service {
         return board;
     }
 
+    public String listBoards(){
+
+        String boardTitle = "";
+
+        for (int i = 0; i < boards.size(); i++){
+
+            boardTitle += "  [  " + boards.get(i).getTitulo() + "  ]  ";
+
+        }
+
+        return boardTitle;
+    }
+
 }
