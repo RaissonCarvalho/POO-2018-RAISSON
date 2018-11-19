@@ -1,18 +1,17 @@
 package app;
 
-import model.Board;
 import model.List;
+import service.Service;
 import ui.UserInterface;
-
-import java.util.ArrayList;
 
 public class App {
 
     public static void main(String[] args) {
 
-        ArrayList<Board> boards = new ArrayList<>();
+        Service service = new Service();
 
         final int CREAT_BOARD =1;
+        final int ADD_LIST = 2;
         final int SAIR = 0;
 
         while (true){
@@ -25,10 +24,10 @@ public class App {
 
                     try {
 
-                        String title = UserInterface.requestTitle();
+                        String title = UserInterface.requestBoardTitle();
+                        String type = UserInterface.requestType();
 
-                        Board board = new Board(title, "private");
-                        boards.add(board);
+                        service.createBoard(title, type);
 
                     }catch (NullPointerException e){
 
@@ -36,6 +35,32 @@ public class App {
 
                     }
                     break;
+                }
+
+                case ADD_LIST:{
+
+                    try {
+
+                        String title = UserInterface.requestBoardTitle();
+
+                        if (service.searchByTitle(title) != null){
+
+                            service.searchByTitle(title).addList(new List(UserInterface.requestListTitle()));
+                        }else{
+
+                            UserInterface.showMsg("Quadro não encontrado");
+
+                        }
+
+                        break;
+
+                    }catch (IndexOutOfBoundsException e){
+
+                        UserInterface.showMsg("Impossível adicionar lista. Nenhum quadro criado");
+                        break;
+
+                    }
+
                 }
 
                 case SAIR:{
@@ -50,4 +75,5 @@ public class App {
         }
 
     }
+
 }
