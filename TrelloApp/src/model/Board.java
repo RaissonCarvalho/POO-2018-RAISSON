@@ -6,7 +6,7 @@ public class Board {
 
     private String titulo;
     private String tipo;
-    private ArrayList<List> lists = new ArrayList<List>();
+    private ArrayList<List> lists = new ArrayList<>();
 
     public Board(String titulo, String tipo) {
         this.titulo = titulo;
@@ -37,6 +37,19 @@ public class Board {
 
         lists.add(list);
 
+    }
+
+    public String listingAllLists(){
+
+        String listTitle = "";
+
+        for (int i = 0; i < lists.size(); i++){
+
+            listTitle += "  [  " + lists.get(i).getTitulo() + "  ]  ";
+
+        }
+
+        return listTitle;
     }
 
 }
