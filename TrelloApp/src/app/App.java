@@ -46,9 +46,9 @@ public class App {
 
                         String title = UserInterface.requestBoardTitle();
 
-                        if (service.searchByTitle(title) != null){
+                        if (service.searchBoardByTitle(title) != null){
 
-                            service.searchByTitle(title).addList(new List(UserInterface.requestListTitle()));
+                            service.searchBoardByTitle(title).addList(new List(UserInterface.requestListTitle()));
                         }else{
 
                             UserInterface.showMsg("Quadro não encontrado");
@@ -95,14 +95,14 @@ public class App {
 
                        try {
 
-                           if (service.searchByTitle(title).getLists().isEmpty()){
+                           if (service.searchBoardByTitle(title).getLists().isEmpty()){
 
-                               UserInterface.showMsg("Nenhuma Lista no Quadro" + " " + service.searchByTitle(title).getTitulo());
+                               UserInterface.showMsg("Nenhuma Lista no Quadro" + " " + service.searchBoardByTitle(title).getTitulo());
                                break;
 
                            }else{
 
-                               UserInterface.showMsg(service.searchByTitle(title).listingAllLists());
+                               UserInterface.showMsg(service.searchBoardByTitle(title).listingAllLists());
                                break;
 
                            }
@@ -119,18 +119,8 @@ public class App {
                 }
 
                 case LIST_ALL_CARDS: {
+                    //TODO IMPLEMENTAR LISTAGEM DE CARTÕES 
 
-                    if (service.getBoards().isEmpty()) {
-
-                        UserInterface.showMsg("Impossível listar Cartões. Nenhum Quadro criado");
-                        break;
-
-                    } else {
-
-                        String title = UserInterface.requestBoardTitle();
-
-
-                    }
                 }
 
                 case SAIR:{
