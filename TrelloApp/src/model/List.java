@@ -19,5 +19,11 @@ public class List {
         this.titulo = titulo;
     }
 
+    public void addCard(Card card){
+
+        cards.add(card);
+
+    }
+
 
 }
