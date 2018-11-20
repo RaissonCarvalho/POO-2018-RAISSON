@@ -8,9 +8,10 @@ public class UserInterface {
         String menu = "--------  TRELLO  --------";
         menu += "\n1 - Criar novo Quadro";
         menu += "\n2 - Adicionar Lista a Quadro";
-        menu += "\n3 - Exibir Quadros";
-        menu += "\n4 - Exibir Listas";
-        menu += "\n5 - Adicionando Cartão a Listas";
+        menu += "\n3 - Adicionando Cartão a Listas";
+        menu += "\n4 - Exibir Quadros";
+        menu += "\n5 - Exibir listas";
+        menu += "\n6 - Exibir Cartões";
         menu += "\n\n0 - sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);

@@ -12,9 +12,10 @@ public class App {
 
         final int CREAT_BOARD =1;
         final int ADD_LIST = 2;
-        final int LIST_ALL_BOARDS = 3;
-        final int LIST_ALL_LISTS = 4;
-        final int LIST_ALL_CARDS = 5;
+        final int ADD_CARD_TO_LIST = 3;
+        final int LIST_ALL_BOARDS = 4;
+        final int LIST_ALL_LISTS = 5;
+        final int LIST_ALL_CARDS = 6;
         final int SAIR = 0;
 
         while (true){
@@ -66,6 +67,11 @@ public class App {
 
                 }
 
+                case LIST_ALL_CARDS: {
+                    //TODO IMPLEMENTAR LISTAGEM DE CARTÕES
+
+                }
+
                 case LIST_ALL_BOARDS:{
 
                     if (service.getBoards().isEmpty()){
@@ -84,7 +90,7 @@ public class App {
 
                 case LIST_ALL_LISTS:{
 
-                   if (service.getBoards().isEmpty()){
+                    if (service.getBoards().isEmpty()){
 
                        UserInterface.showMsg("Impossível listar Cartões. Nenhum Quadro criado");
                        break;
@@ -118,10 +124,6 @@ public class App {
 
                 }
 
-                case LIST_ALL_CARDS: {
-                    //TODO IMPLEMENTAR LISTAGEM DE CARTÕES 
-
-                }
 
                 case SAIR:{
                     return;
