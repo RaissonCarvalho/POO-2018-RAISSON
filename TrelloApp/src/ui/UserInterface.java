@@ -8,11 +8,11 @@ public class UserInterface {
         String menu = "--------  TRELLO  --------";
         menu += "\n1 - Criar novo Quadro";
         menu += "\n2 - Adicionar Lista a Quadro";
-        menu += "\n3 - Adicionando Cartão a Listas";
+        menu += "\n3 - Adicionar Cartão a Listas";
         menu += "\n4 - Exibir Quadros";
         menu += "\n5 - Exibir listas";
         menu += "\n6 - Exibir Cartões";
-        menu += "\n\n0 - sair";
+        menu += "\n\n0 - Sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);
 
@@ -35,6 +35,10 @@ public class UserInterface {
 
     public static String requestVisibility(){
         return JOptionPane.showInputDialog(null, "Digite a visibilidade do quadro: (Private ou Public)");
+    }
+
+    public static String requestCardTitle(){
+        return JOptionPane.showInputDialog(null, "Digite o titulo do Cartão: ");
     }
 
 }
