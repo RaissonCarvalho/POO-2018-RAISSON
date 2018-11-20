@@ -1,6 +1,7 @@
 package service;
 
 import model.Board;
+import model.Card;
 import model.List;
 
 import java.util.ArrayList;
@@ -21,6 +22,19 @@ public class Service {
 
     }
 
+    public List createList(String title){
+
+        List list = new List(title);
+
+        return list;
+    }
+
+    public Card createCard(String title){
+
+        Card card = new Card(title);
+
+        return card;
+    }
 
     public Board searchBoardByTitle(String title){
 
