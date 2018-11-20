@@ -17,6 +17,7 @@ public class App {
         final int LIST_ALL_BOARDS = 4;
         final int LIST_ALL_LISTS = 5;
         final int LIST_ALL_CARDS = 6;
+        final int LIST_LOGS = 7;
         final int SAIR = 0;
 
         while (true){
@@ -54,6 +55,8 @@ public class App {
                             String listTitle = UserInterface.requestListTitle();
 
                             service.searchBoardByTitle(title).addList(service.createList(listTitle));
+
+                            service.createLog("Adicionou a lista " + listTitle + " ao Quadro " + title);
                         }else{
 
                             UserInterface.showMsg("Quadro não encontrado");
@@ -94,6 +97,8 @@ public class App {
                                 String listTitle = UserInterface.requestListTitle();
                                 String cardTitle = UserInterface.requestCardTitle();
                                 service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(service.createCard(cardTitle));
+
+                                service.createLog("Adicionou o Cartão " + cardTitle + "à Lista " + listTitle + "do Quadro " + boardTitle);
                                 break;
 
                             }
@@ -166,6 +171,22 @@ public class App {
                 case LIST_ALL_CARDS:{
 
 
+
+                }
+
+                case LIST_LOGS:{
+
+                    if (service.getLogs().isEmpty()){
+
+                        UserInterface.showMsg("Não há histórico para ser mostrado");
+                        break;
+
+                    }else{
+
+                        UserInterface.showMsg(service.listLogs());
+                        break;
+
+                    }
 
                 }
 
