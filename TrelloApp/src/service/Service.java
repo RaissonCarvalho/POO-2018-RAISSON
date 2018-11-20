@@ -16,6 +16,10 @@ public class Service {
         return boards;
     }
 
+    public ArrayList<Log> getLogs() {
+        return logs;
+    }
+
     public void createBoard(String title, String tipo){
 
 
