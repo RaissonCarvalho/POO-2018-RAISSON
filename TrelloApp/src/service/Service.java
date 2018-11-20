@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Service {
 
     ArrayList<Board> boards = new ArrayList<>();
+    ArrayList<Log> logs = new ArrayList<>();
 
     public ArrayList<Board> getBoards() {
         return boards;
@@ -40,6 +41,7 @@ public class Service {
     public Log createLog(String descricao){
 
         Log log = new Log(descricao);
+        logs.add(log);
 
         return log;
     }
@@ -74,6 +76,18 @@ public class Service {
         }
 
         return boardTitle;
+    }
+
+    public String listLogs(){
+        String descricaoLog = "";
+
+        for (int i = 0; i < logs.size(); i++){
+
+            descricaoLog += "  [  " + logs.get(i).getDescricao() + "  ]  \n";
+
+        }
+
+        return descricaoLog;
     }
 
 }
