@@ -5,8 +5,8 @@ import javax.swing.*;
 public class UserInterface {
 
     public static int readMenuOption(){
-        String menu = "--------  TRELLO  --------";
-        menu += "\n1 - Criar novo Quadro";
+        String menu = "------------  TRELLO  ------------";
+        menu += "\n\n1 - Criar novo Quadro";
         menu += "\n2 - Adicionar Lista a Quadro";
         menu += "\n3 - Adicionar Cartão a Listas";
         menu += "\n4 - Exibir Quadros";
