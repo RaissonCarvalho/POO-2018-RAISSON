@@ -33,6 +33,7 @@ public class App {
                         String type = UserInterface.requestVisibility();
 
                         service.createBoard(title, type);
+                        service.createLog("Criou quadro " + title);
 
                     }catch (NullPointerException e){
 
