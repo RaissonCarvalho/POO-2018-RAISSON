@@ -1,5 +1,6 @@
 package app;
 
+import model.Card;
 import model.List;
 import service.Service;
 import ui.UserInterface;
@@ -35,7 +36,7 @@ public class App {
 
                     }catch (NullPointerException e){
 
-                        UserInterface.showMsg("Erro" + e.getMessage());
+                        UserInterface.showMsg("Erro ao criar quadro" );
 
                     }
                     break;
@@ -67,8 +68,42 @@ public class App {
 
                 }
 
-                case LIST_ALL_CARDS: {
-                    //TODO IMPLEMENTAR LISTAGEM DE CARTÕES
+                case ADD_CARD_TO_LIST:{
+
+                    try {
+
+                        if (service.getBoards().isEmpty()){
+
+                            UserInterface.showMsg("Nenhum Quadro criado");
+                            break;
+
+                        }else{
+
+                            String boardTitle =  UserInterface.requestBoardTitle();
+
+                            if (service.searchBoardByTitle(boardTitle).getLists().isEmpty()){
+
+                                UserInterface.showMsg("Nenhuma Lista criada");
+                                break;
+
+                            }else{
+
+                                String listTitle = UserInterface.requestListTitle();
+                                service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(new Card(UserInterface.requestCardTitle()));
+                                break;
+
+                            }
+
+                        }
+
+
+
+                    }catch (NullPointerException e){
+
+                        UserInterface.showMsg("Não foi possivel adicionar Cartão");
+                        break;
+
+                    }
 
                 }
 
@@ -76,7 +111,7 @@ public class App {
 
                     if (service.getBoards().isEmpty()){
 
-                        UserInterface.showMsg("Nenhum Quadro criado");
+                        UserInterface.showMsg("Impossível listar Quadros. Nenhum Quadro criado");
                         break;
 
                     }else{
@@ -124,6 +159,11 @@ public class App {
 
                 }
 
+                case LIST_ALL_CARDS:{
+
+
+
+                }
 
                 case SAIR:{
                     return;
