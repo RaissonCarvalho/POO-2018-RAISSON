@@ -12,7 +12,7 @@ public class UserInterface {
         menu += "\n4 - Exibir Quadros";
         menu += "\n5 - Exibir listas";
         menu += "\n6 - Exibir Cartões";
-        menu += "\n7 - Exibir Histórico";
+        menu += "\n7 - Exibir Registros";
         menu += "\n\n0 - Sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);

@@ -34,7 +34,7 @@ public class App {
                         String type = UserInterface.requestVisibility();
 
                         service.createBoard(title, type);
-                        service.createLog("Criou quadro " + title);
+                        service.createLog("Criou o Quadro " + title);
 
                     }catch (NullPointerException e){
 
@@ -98,14 +98,12 @@ public class App {
                                 String cardTitle = UserInterface.requestCardTitle();
                                 service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(service.createCard(cardTitle));
 
-                                service.createLog("Adicionou o Cartão " + cardTitle + "à Lista " + listTitle + "do Quadro " + boardTitle);
+                                service.createLog("Adicionou o Cartão " + cardTitle + " à Lista " + listTitle + "do Quadro " + boardTitle);
                                 break;
 
                             }
 
                         }
-
-
 
                     }catch (NullPointerException e){
 
@@ -170,7 +168,7 @@ public class App {
 
                 case LIST_ALL_CARDS:{
 
-
+                    //TODO Implementar Exibir Cartões
 
                 }
 
@@ -178,7 +176,7 @@ public class App {
 
                     if (service.getLogs().isEmpty()){
 
-                        UserInterface.showMsg("Não há histórico para ser mostrado");
+                        UserInterface.showMsg("Não há registros para serem mostrados");
                         break;
 
                     }else{
