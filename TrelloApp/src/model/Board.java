@@ -52,4 +52,22 @@ public class Board {
         return listTitle;
     }
 
+    public List searchListByTitle(String title) {
+
+        List list = null;
+
+        for (int i = 0; i < lists.size(); i++){
+
+            if (lists.get(i).getTitulo().equals(title)){
+
+                list = lists.get(i);
+                break;
+
+            }
+
+        }
+
+        return list;
+    }
+
 }
