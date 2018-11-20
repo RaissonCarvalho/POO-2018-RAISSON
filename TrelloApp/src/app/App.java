@@ -36,7 +36,7 @@ public class App {
 
                     }catch (NullPointerException e){
 
-                        UserInterface.showMsg("Erro ao criar quadro" );
+                        UserInterface.showMsg("Erro ao criar Quadro" );
 
                     }
                     break;
@@ -50,7 +50,9 @@ public class App {
 
                         if (service.searchBoardByTitle(title) != null){
 
-                            service.searchBoardByTitle(title).addList(new List(UserInterface.requestListTitle()));
+                            String listTitle = UserInterface.requestListTitle();
+
+                            service.searchBoardByTitle(title).addList(service.createList(listTitle));
                         }else{
 
                             UserInterface.showMsg("Quadro não encontrado");
@@ -89,7 +91,8 @@ public class App {
                             }else{
 
                                 String listTitle = UserInterface.requestListTitle();
-                                service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(new Card(UserInterface.requestCardTitle()));
+                                String cardTitle = UserInterface.requestCardTitle();
+                                service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(service.createCard(cardTitle));
                                 break;
 
                             }
@@ -111,7 +114,7 @@ public class App {
 
                     if (service.getBoards().isEmpty()){
 
-                        UserInterface.showMsg("Impossível listar Quadros. Nenhum Quadro criado");
+                        UserInterface.showMsg("Impossível exibir Quadros. Nenhum Quadro criado");
                         break;
 
                     }else{
@@ -127,7 +130,7 @@ public class App {
 
                     if (service.getBoards().isEmpty()){
 
-                       UserInterface.showMsg("Impossível listar Cartões. Nenhum Quadro criado");
+                       UserInterface.showMsg("Impossível exibir Listas. Nenhum Quadro criado");
                        break;
 
                    }else{
