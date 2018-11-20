@@ -3,6 +3,7 @@ package service;
 import model.Board;
 import model.Card;
 import model.List;
+import model.Log;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,13 @@ public class Service {
         Card card = new Card(title);
 
         return card;
+    }
+
+    public Log createLog(String descricao){
+
+        Log log = new Log(descricao);
+
+        return log;
     }
 
     public Board searchBoardByTitle(String title){
