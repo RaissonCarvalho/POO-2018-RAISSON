@@ -1,7 +1,5 @@
 package app;
 
-import model.Card;
-import model.List;
 import service.Service;
 import ui.UserInterface;
 
@@ -116,7 +114,7 @@ public class App {
 
                 case LIST_ALL_BOARDS:{
 
-                    UserInterface.showMsg(service.listBoards());
+                    UserInterface.showMsg(service.listingAllBoards());
                     break;
 
                 }
@@ -125,7 +123,7 @@ public class App {
 
                     if (service.getBoards().isEmpty()){
 
-                       UserInterface.showMsg("Impossível exibir Listas. Nenhum Quadro criado");
+                       UserInterface.showMsg("Nenhum Quadro criado");
                        break;
 
                    }else{
@@ -134,17 +132,8 @@ public class App {
 
                        try {
 
-                           if (service.searchBoardByTitle(title).getLists().isEmpty()){
-
-                               UserInterface.showMsg("Nenhuma Lista no Quadro" + " " + service.searchBoardByTitle(title).getTitulo());
-                               break;
-
-                           }else{
-
-                               UserInterface.showMsg(service.searchBoardByTitle(title).listingAllLists());
-                               break;
-
-                           }
+                           UserInterface.showMsg(service.searchBoardByTitle(title).listingAllLists());
+                           break;
 
                        }catch (NullPointerException e){
 
@@ -159,13 +148,53 @@ public class App {
 
                 case LIST_ALL_CARDS:{
 
-                    //TODO Implementar Exibir Cartões
+                    if (service.getBoards().isEmpty()){
+
+                        UserInterface.showMsg("Nenhum Quadro criado");
+                        break;
+
+                    }else{
+
+                        String boadTitle = UserInterface.requestBoardTitle();
+
+                        try {
+
+                            if (service.searchBoardByTitle(boadTitle).getLists().isEmpty()){
+
+                                UserInterface.showMsg("Nenhuma Lista criada");
+                                break;
+
+                            }else{
+
+                                String listTitle = UserInterface.requestListTitle();
+
+                                try {
+
+                                    UserInterface.showMsg(service.searchBoardByTitle(boadTitle).searchListByTitle(listTitle).listingAllCards());
+                                    break;
+
+                                }catch (NullPointerException e){
+
+                                    UserInterface.showMsg("Lista não encontrada");
+                                    break;
+
+                                }
+
+                            }
+
+                        }catch (NullPointerException e){
+
+                            UserInterface.showMsg("Quadro não encontrado");
+
+                        }
+
+                    }
 
                 }
 
                 case LIST_LOGS:{
 
-                    UserInterface.showMsg(service.listLogs());
+                    UserInterface.showMsg(service.listingAllLogs());
                     break;
 
                 }
