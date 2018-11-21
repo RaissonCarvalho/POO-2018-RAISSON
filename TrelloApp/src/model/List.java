@@ -25,5 +25,25 @@ public class List {
 
     }
 
+    public String listingAllCards(){
+
+        String cardTitle = "";
+
+        if (cards.isEmpty()){
+
+            cardTitle = "Nenhum cartão para ser exibida";
+
+        }else{
+
+            for (int i = 0; i < cards.size(); i++){
+
+                cardTitle += "  [  " + cards.get(i).getTitulo() + "  ]  ";
+
+            }
+        }
+
+        return cardTitle;
+
+    }
 
 }
