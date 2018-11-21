@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Board {
 
@@ -30,7 +31,7 @@ public class Board {
     }
 
     public java.util.List<List> getLists(){
-        return lists;
+        return Collections.unmodifiableList(lists);
     }
 
     public void addList(List list){
@@ -43,7 +44,7 @@ public class Board {
 
         String listTitle = "";
 
-        if (listTitle.isEmpty()){
+        if (lists.isEmpty()){
 
             listTitle = "Nenhuma lista para ser exibida";
 
