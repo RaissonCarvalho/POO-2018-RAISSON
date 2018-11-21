@@ -40,6 +40,12 @@ public class Board {
 
     }
 
+    public void removeList(List list){
+
+        lists.remove(list);
+
+    }
+
     public String listingAllLists(){
 
         String listTitle = "";
