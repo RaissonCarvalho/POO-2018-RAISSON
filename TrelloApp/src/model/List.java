@@ -31,7 +31,7 @@ public class List {
 
         if (cards.isEmpty()){
 
-            cardTitle = "Nenhum cartão para ser exibida";
+            cardTitle = "Nenhum cartão para ser exibido";
 
         }else{
 
