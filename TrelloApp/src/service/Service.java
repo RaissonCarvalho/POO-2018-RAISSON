@@ -69,7 +69,7 @@ public class Service {
     }
 
 
-    public String listBoards(){
+    public String listingAllBoards(){
 
         String boardTitle = "";
 
@@ -90,7 +90,7 @@ public class Service {
         return boardTitle;
     }
 
-    public String listLogs(){
+    public String listingAllLogs(){
         String descricaoLog = "";
 
         if (logs.isEmpty()){
