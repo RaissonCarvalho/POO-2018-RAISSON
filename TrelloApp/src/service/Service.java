@@ -73,9 +73,17 @@ public class Service {
 
         String boardTitle = "";
 
-        for (int i = 0; i < boards.size(); i++){
+        if (boards.isEmpty()){
 
-            boardTitle += "  [  " + boards.get(i).getTitulo() + "  ]  ";
+            boardTitle = "Nenhum Quadro para ser exibido";
+
+        }else{
+
+            for (int i = 0; i < boards.size(); i++){
+
+                boardTitle += "  [  " + boards.get(i).getTitulo() + "  ]  ";
+
+            }
 
         }
 
@@ -85,9 +93,17 @@ public class Service {
     public String listLogs(){
         String descricaoLog = "";
 
-        for (int i = 0; i < logs.size(); i++){
+        if (logs.isEmpty()){
 
-            descricaoLog += "  [  " + logs.get(i).getDescricao() + "  ]  \n";
+            descricaoLog = "Não existem registros";
+
+        }else{
+
+            for (int i = 0; i < logs.size(); i++){
+
+                descricaoLog += "  [  " + logs.get(i).getDescricao() + "  ]  \n";
+
+            }
 
         }
 

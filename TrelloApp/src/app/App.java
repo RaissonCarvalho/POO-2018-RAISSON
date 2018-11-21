@@ -116,17 +116,8 @@ public class App {
 
                 case LIST_ALL_BOARDS:{
 
-                    if (service.getBoards().isEmpty()){
-
-                        UserInterface.showMsg("Impossível exibir Quadros. Nenhum Quadro criado");
-                        break;
-
-                    }else{
-
-                        UserInterface.showMsg(service.listBoards());
-                        break;
-
-                    }
+                    UserInterface.showMsg(service.listBoards());
+                    break;
 
                 }
 
@@ -174,17 +165,8 @@ public class App {
 
                 case LIST_LOGS:{
 
-                    if (service.getLogs().isEmpty()){
-
-                        UserInterface.showMsg("Não há registros para serem mostrados");
-                        break;
-
-                    }else{
-
-                        UserInterface.showMsg(service.listLogs());
-                        break;
-
-                    }
+                    UserInterface.showMsg(service.listLogs());
+                    break;
 
                 }
 

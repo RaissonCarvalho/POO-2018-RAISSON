@@ -43,10 +43,17 @@ public class Board {
 
         String listTitle = "";
 
-        for (int i = 0; i < lists.size(); i++){
+        if (listTitle.isEmpty()){
 
-            listTitle += "  [  " + lists.get(i).getTitulo() + "  ]  ";
+            listTitle = "Nenhuma lista para ser exibida";
 
+        }else{
+
+            for (int i = 0; i < lists.size(); i++){
+
+                listTitle += "  [  " + lists.get(i).getTitulo() + "  ]  ";
+
+            }
         }
 
         return listTitle;
