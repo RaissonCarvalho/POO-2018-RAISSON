@@ -1,5 +1,7 @@
 package model;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 public class Log {
 
     private String descricao;

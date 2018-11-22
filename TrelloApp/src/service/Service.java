@@ -22,9 +22,14 @@ public class Service {
 
     public void createBoard(String title, String tipo){
 
-
         Board board = new Board(title, tipo);
         boards.add(board);
+
+    }
+
+    public void removeBoard(String title){
+
+        boards.remove(searchBoardByTitle(title));
 
     }
 

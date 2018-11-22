@@ -9,10 +9,11 @@ public class UserInterface {
         menu += "\n\n1 - Criar novo Quadro";
         menu += "\n2 - Adicionar Lista a Quadro";
         menu += "\n3 - Adicionar Cartão a Listas";
-        menu += "\n4 - Exibir Quadros";
-        menu += "\n5 - Exibir listas";
-        menu += "\n6 - Exibir Cartões";
-        menu += "\n7 - Exibir Registros";
+        menu += "\n4 - Mover Lista para Quadro";
+        menu += "\n5 - Exibir Quadros";
+        menu += "\n6 - Exibir listas";
+        menu += "\n7 - Exibir Cartões";
+        menu += "\n8 - Exibir Registros";
         menu += "\n\n0 - Sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);
@@ -27,7 +28,11 @@ public class UserInterface {
     }
 
     public static String requestBoardTitle(){
-        return JOptionPane.showInputDialog(null, "Digite o título do quadro: ");
+        return JOptionPane.showInputDialog(null, "Digite o título do Quadro: ");
+    }
+
+    public static String requestNewBoardTitle(){
+        return JOptionPane.showInputDialog(null, "Digite o título do Quadro para qual deseja mover: ");
     }
 
     public static String requestListTitle(){
