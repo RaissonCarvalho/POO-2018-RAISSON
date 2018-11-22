@@ -1,5 +1,7 @@
 package app;
 
+import model.Board;
+import model.List;
 import service.Service;
 import ui.UserInterface;
 
@@ -13,10 +15,11 @@ public class App {
         final int ADD_LIST = 2;
         final int ADD_CARD_TO_LIST = 3;
         final int MOVE_LIST_TO_BOARD = 4;
-        final int LIST_ALL_BOARDS = 5;
-        final int LIST_ALL_LISTS = 6;
-        final int LIST_ALL_CARDS = 7;
-        final int LIST_LOGS = 8;
+        final int DELETE_BOARD = 5;
+        final int LIST_ALL_BOARDS = 6;
+        final int LIST_ALL_LISTS = 7;
+        final int LIST_ALL_CARDS = 8;
+        final int LIST_LOGS = 9;
         final int SAIR = 0;
 
         while (true){
@@ -47,6 +50,16 @@ public class App {
                 }
 
                 case MOVE_LIST_TO_BOARD:{
+
+                    moveListToBoard(service);
+                    break;
+
+                }
+
+                case DELETE_BOARD:{
+
+                    deleteBoard(service);
+                    break;
 
                 }
 
@@ -99,7 +112,7 @@ public class App {
             String type = UserInterface.requestVisibility();
 
             service.createBoard(title, type);
-            service.createLog("Criou o Quadro " + title);
+            service.createLog("Criou o Quadro [ " + title + " ]");
 
         }catch (NullPointerException e){
 
@@ -121,7 +134,7 @@ public class App {
 
                 service.searchBoardByTitle(title).addList(service.createList(listTitle));
 
-                service.createLog("Adicionou a lista " + listTitle + " ao Quadro " + title);
+                service.createLog("Adicionou a lista [ " + listTitle + " ] ao Quadro " + title);
             }else{
 
                 UserInterface.showMsg("Quadro não encontrado");
@@ -161,7 +174,7 @@ public class App {
                         String cardTitle = UserInterface.requestCardTitle();
                         service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle).addCard(service.createCard(cardTitle));
 
-                        service.createLog("Adicionou o Cartão " + cardTitle + " à Lista " + listTitle + "do Quadro " + boardTitle);
+                        service.createLog("Adicionou o Cartão [" + cardTitle + " ] à Lista [ " + listTitle + " ] do Quadro " + boardTitle);
 
                     }catch (NullPointerException e){
 
@@ -193,28 +206,36 @@ public class App {
 
                 String boardTitle = UserInterface.requestBoardTitle();
 
+                Board board = service.searchBoardByTitle(boardTitle);
+
                 if (service.searchBoardByTitle(boardTitle).getLists().isEmpty()){
 
-                    UserInterface.showMsg("Nenhuma lista criada");
+                    UserInterface.showMsg("Nenhuma Lista criada");
+
                 }else{
 
                     try {
 
                         String listTitle = UserInterface.requestListTitle();
-                        String newBoardTitle = UserInterface.requestNewBoardTitle();
+
+                        List list = service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle);
 
                         try {
 
-                            service.searchBoardByTitle(boardTitle).removeList(service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle));
-                            service.searchBoardByTitle(newBoardTitle).addList(service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle));
+                            String newBoardTitle = UserInterface.requestNewBoardTitle();
 
+                            Board newBoard = service.searchBoardByTitle(newBoardTitle);
+
+                            newBoard.addList(list);
+                            board.removeList(list);
+
+                            service.createLog("Moveu a Lista [" + listTitle + " ]para o Quadro " + newBoardTitle);
 
                         }catch (NullPointerException e){
 
                             UserInterface.showMsg("Quadro não encontrado");
 
                         }
-
 
                     }catch (NullPointerException e){
 
@@ -223,6 +244,33 @@ public class App {
                     }
 
                 }
+
+            }catch (NullPointerException e){
+
+                UserInterface.showMsg("Quadro não encontrado");
+
+            }
+
+        }
+
+    }
+
+    private static void deleteBoard(Service service){
+
+        if (service.getBoards().isEmpty()){
+
+            UserInterface.showMsg("Nenhum Quadro criado");
+
+        }else{
+
+            String boardTitle = UserInterface.requestBoardTitle();
+
+            try {
+
+               Board board = service.searchBoardByTitle(boardTitle);
+
+               service.removeBoard(board.getTitulo());
+               service.createLog("Removeu o Quadro [ " + boardTitle + " ]");
 
             }catch (NullPointerException e){
 
