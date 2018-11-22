@@ -10,10 +10,11 @@ public class UserInterface {
         menu += "\n2 - Adicionar Lista a Quadro";
         menu += "\n3 - Adicionar Cartão a Listas";
         menu += "\n4 - Mover Lista para Quadro";
-        menu += "\n5 - Exibir Quadros";
-        menu += "\n6 - Exibir listas";
-        menu += "\n7 - Exibir Cartões";
-        menu += "\n8 - Exibir Registros";
+        menu += "\n5 - Excluir Quadro";
+        menu += "\n6 - Exibir Quadros";
+        menu += "\n7 - Exibir listas";
+        menu += "\n8 - Exibir Cartões";
+        menu += "\n9 - Exibir Registros";
         menu += "\n\n0 - Sair";
 
         String strOpcao = JOptionPane.showInputDialog(null,menu);
