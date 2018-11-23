@@ -15,13 +15,19 @@ public class List {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public ArrayList<Card> getCards() {
+        return cards;
     }
 
     public void addCard(Card card){
 
         cards.add(card);
+
+    }
+
+    public void removeCard(Card card){
+
+        cards.remove(card);
 
     }
 
@@ -44,6 +50,23 @@ public class List {
 
         return cardTitle;
 
+    }
+
+    public Card searchCardByTitle(String title){
+
+        Card card = null;
+
+        for (int i = 0; i< cards.size(); i++){
+
+            if (cards.get(i).getTitulo().equals(title)){
+
+                card = cards.get(i);
+
+            }
+
+        }
+
+        return card;
     }
 
 }
