@@ -310,17 +310,12 @@ public class App {
 
                         String listTitle = UserInterface.requestListTitle();
 
-                        try {
+                        if (board.searchListByTitle(listTitle) != null){
+                            
+                            board.removeList(board.searchListByTitle(listTitle));
 
-                            List list = board.searchListByTitle(listTitle);
-                            board.removeList(list);
-
-                            service.createLog("Removeu a Lista [ " + listTitle + " ] do Quadro [ " +boardTitle + " ]");
-
-                        }catch (NullPointerException e){
-
+                        }else{
                             UserInterface.showMsg("Lista não encontrada");
-
                         }
 
                     }
