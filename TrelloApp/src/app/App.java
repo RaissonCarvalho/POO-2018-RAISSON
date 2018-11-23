@@ -16,10 +16,11 @@ public class App {
         final int ADD_CARD_TO_LIST = 3;
         final int MOVE_LIST_TO_BOARD = 4;
         final int DELETE_BOARD = 5;
-        final int LIST_ALL_BOARDS = 6;
-        final int LIST_ALL_LISTS = 7;
-        final int LIST_ALL_CARDS = 8;
-        final int LIST_LOGS = 9;
+        final int DELETE_LIST = 6;
+        final int LIST_ALL_BOARDS = 7;
+        final int LIST_ALL_LISTS = 8;
+        final int LIST_ALL_CARDS = 9;
+        final int LIST_LOGS = 10;
         final int SAIR = 0;
 
         while (true){
@@ -59,6 +60,13 @@ public class App {
                 case DELETE_BOARD:{
 
                     deleteBoard(service);
+                    break;
+
+                }
+
+                case DELETE_LIST:{
+
+                    deleteList(service);
                     break;
 
                 }
@@ -131,7 +139,6 @@ public class App {
             if (service.searchBoardByTitle(title) != null){
 
                 String listTitle = UserInterface.requestListTitle();
-
                 service.searchBoardByTitle(title).addList(service.createList(listTitle));
 
                 service.createLog("Adicionou a lista [ " + listTitle + " ] ao Quadro " + title);
@@ -205,7 +212,6 @@ public class App {
             try {
 
                 String boardTitle = UserInterface.requestBoardTitle();
-
                 Board board = service.searchBoardByTitle(boardTitle);
 
                 if (service.searchBoardByTitle(boardTitle).getLists().isEmpty()){
@@ -217,13 +223,11 @@ public class App {
                     try {
 
                         String listTitle = UserInterface.requestListTitle();
-
                         List list = service.searchBoardByTitle(boardTitle).searchListByTitle(listTitle);
 
                         try {
 
                             String newBoardTitle = UserInterface.requestNewBoardTitle();
-
                             Board newBoard = service.searchBoardByTitle(newBoardTitle);
 
                             newBoard.addList(list);
@@ -268,9 +272,64 @@ public class App {
             try {
 
                Board board = service.searchBoardByTitle(boardTitle);
-
                service.removeBoard(board.getTitulo());
+
                service.createLog("Removeu o Quadro [ " + boardTitle + " ]");
+
+            }catch (NullPointerException e){
+
+                UserInterface.showMsg("Quadro não encontrado");
+
+            }
+
+        }
+
+    }
+
+    private static void deleteList(Service service){
+
+        if (service.getBoards().isEmpty()){
+
+            UserInterface.showMsg("Nenhum Quadro criado");
+
+        }else{
+
+            String boardTitle = UserInterface.requestBoardTitle();
+
+            try {
+
+                Board board = service.searchBoardByTitle(boardTitle);
+
+                try {
+
+                    if (board.getLists().isEmpty()){
+
+                        UserInterface.showMsg("Nenhuma Lista no Quadro [ " +boardTitle + " ]");
+
+                    }else{
+
+                        String listTitle = UserInterface.requestListTitle();
+
+                        try {
+
+                            List list = board.searchListByTitle(listTitle);
+                            board.removeList(list);
+
+                            service.createLog("Removeu a Lista [ " + listTitle + " ] do Quadro [ " +boardTitle + " ]");
+
+                        }catch (NullPointerException e){
+
+                            UserInterface.showMsg("Lista não encontrada");
+
+                        }
+
+                    }
+
+                }catch (NullPointerException e){
+
+                    UserInterface.showMsg("Quadro não encontrado");
+
+                }
 
             }catch (NullPointerException e){
 
