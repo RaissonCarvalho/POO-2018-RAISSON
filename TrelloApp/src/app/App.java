@@ -1,6 +1,7 @@
 package app;
 
 import model.Board;
+import model.Card;
 import model.List;
 import service.Service;
 import ui.UserInterface;
@@ -17,10 +18,11 @@ public class App {
         final int MOVE_LIST_TO_BOARD = 4;
         final int DELETE_BOARD = 5;
         final int DELETE_LIST = 6;
-        final int LIST_ALL_BOARDS = 7;
-        final int LIST_ALL_LISTS = 8;
-        final int LIST_ALL_CARDS = 9;
-        final int LIST_LOGS = 10;
+        final int DELETE_CARD =7;
+        final int LIST_ALL_BOARDS = 8;
+        final int LIST_ALL_LISTS = 9;
+        final int LIST_ALL_CARDS = 10;
+        final int LIST_LOGS = 11;
         final int SAIR = 0;
 
         while (true){
@@ -67,6 +69,13 @@ public class App {
                 case DELETE_LIST:{
 
                     deleteList(service);
+                    break;
+
+                }
+
+                case DELETE_CARD:{
+
+                    deleteCard(service);
                     break;
 
                 }
@@ -311,7 +320,7 @@ public class App {
                         String listTitle = UserInterface.requestListTitle();
 
                         if (board.searchListByTitle(listTitle) != null){
-                            
+
                             board.removeList(board.searchListByTitle(listTitle));
 
                         }else{
@@ -323,6 +332,69 @@ public class App {
                 }catch (NullPointerException e){
 
                     UserInterface.showMsg("Quadro não encontrado");
+
+                }
+
+            }catch (NullPointerException e){
+
+                UserInterface.showMsg("Quadro não encontrado");
+
+            }
+
+        }
+
+    }
+
+    private static void deleteCard(Service service){
+
+        if (service.getBoards().isEmpty()){
+
+            UserInterface.showMsg("Nenhum Quadro criado");
+
+        }else{
+
+            String boardTitle = UserInterface.requestBoardTitle();
+
+            try {
+
+                Board board = service.searchBoardByTitle(boardTitle);
+
+                if (board.getLists().isEmpty()){
+
+                    UserInterface.showMsg("Lista não encontrada");
+
+                }else{
+
+                    String listTitle = UserInterface.requestListTitle();
+
+                    try {
+
+                        List list = board.searchListByTitle(listTitle);
+
+                        if (list.getCards().isEmpty()){
+
+                            UserInterface.showMsg("Nenhum Cartão na Lista [ " + listTitle + " ]");
+
+                        }else{
+
+                            String cardTitle = UserInterface.requestCardTitle();
+
+                            try {
+
+                                list.getCards().remove(list.searchCardByTitle(cardTitle));
+
+                            }catch (NullPointerException e){
+
+                                UserInterface.showMsg("Cartão não encontrado");
+
+                            }
+
+                        }
+
+                    }catch (NullPointerException e){
+
+                        UserInterface.showMsg("Lista não encontrada");
+                    }
 
                 }
 
