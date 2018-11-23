@@ -382,6 +382,7 @@ public class App {
                             try {
 
                                 list.getCards().remove(list.searchCardByTitle(cardTitle));
+                                service.createLog("Deletou o Cartão [ " + cardTitle + " ] da Lista [ " + listTitle + " ] do Quadro [ " + boardTitle + " ]");
 
                             }catch (NullPointerException e){
 
