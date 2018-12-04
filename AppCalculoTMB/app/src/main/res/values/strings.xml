@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppCalculoTBM</string>
+    <string name="hint_nome">Digite seu nome</string>
+</resources>
